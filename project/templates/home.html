@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{% block title %}
+    Home Page
+{% endblock %}
+
+{% block content %}
+<div class="form1">
+
+<form action="flight_detail.html" method="post">
+    <label for="origin">Select Origin:<br>    
+    <input list="airports" name="airport_from" required><br>
+    <datalist id="airports">
+        <option value="Chennai"></option>
+        <option value="Delhi"></option>
+        <option value="Kolkata"></option>
+        <option value="Mumbai"></option>
+        <option value="Bangalore"></option>
+    </datalist>
+    </label>
+    <br>
+    <label for="destination">Select destination:<br>
+    <input list="airports" name="airport_to" required><br>
+    <datalist id="airports">
+        <option value="Chennai"></option>
+        <option value="Delhi"></option>
+        <option value="Kolkata"></option>
+        <option value="Mumbai"></option>
+        <option value="Bangalore"></option>
+    </datalist>
+    </label>
+    <br>
+    <label for="seats">No. of seats:</label><br>
+  <input type="number" id="seats" name="seats" min="1" required><br>
+  <br>
+    <label for="date"> Travel Date:<br>
+        <input id = "date1" type="date" name="date" required>
+    </label><br>
+    <div id="fly"><input type="submit" style="float:right" value="Fly" >
+     </div>
+</form>
+
+ </div>
+ 	 <aside>
+ 	<h1>Book Your Flight Today</h1>
+ 	<br>
+ 	<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+
+ </aside>
+ <script src="script.js">
+</script>
+{% endblock %}

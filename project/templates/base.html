@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>
+        {% block title %}
+        {% endblock %}
+    </title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body background="">
+	<div class="topnav">
+  <a class="active" href="{{ url_for('home_page') }}">Home</a>
+
+  <a href="my_trip.html">My Trips</a>
+
+  <a href="">About Us</a>
+  <a class="active" style="float:right" href="{{ url_for('login_page') }}">login</a>
+        <a class="active" style="float:right" href="{{ url_for('user_detail_page') }}">register</a>
+</div>
+{% block content %}
+    {% endblock %}
+</body>
+</html>

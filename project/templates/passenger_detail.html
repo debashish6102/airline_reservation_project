@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+  <label for="seat">No. of seats:</label><br>
+  <input type="number" id="seat" name="seats" min="1" required><br>
+  <button type="button">Done</button>
+</body>
+<body>
+
+  <h4>Enter the details of all the passengers:</h4>
+	<div><head>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+</head></div>
+	<form action="payment.html" method="post">
+  
+<table class=passenger_table>
+  <tr>
+    <th>S.no.</th>
+    <th>Name</th>
+    <th>Age</th>
+    <th>Gender</th>
+  </tr>
+  <tr>
+    <td></td>
+    <td>
+      <label for="name"></label>
+  <input type="text" id="name" name="name" required><br>
+    </td>
+    <td>
+      <label for="age"></label>
+  <input type="text" id="age" name="age" required><br>
+    </td>
+    <td>
+      <div id="gender">    
+    <input list="sex" name="passenger_sex" required>
+    <datalist id="sex">
+        <option value="Male"></option>
+        <option value="Female"></option>
+        <option value="Others"></option>
+    </datalist>
+    </div>
+    <br>    
+    </td>
+  </tr>
+</table>
+<div id="submit"><input type="submit" style="float:right" value="Submit" >
+  </div>
+
+</form>
+<script src="script.js">
+</script>
+
+</body>
+</html>

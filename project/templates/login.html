@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block title %}
+    Home Page
+{% endblock %}
+
+{% block content %}
+  <div class=login_menu>
+  <form action="passenger_detail.html" method="post">
+  <h4>Enter login credentials:</h4>
+  <div>
+  <label for="userID">User ID:</label>
+  <input type="text" id="userID" name="userID" required><br>
+  </div>
+
+  <div>
+  <label for="password">Password:</label>
+  <input type="text" id="password" name="password" required><br>
+  </div>
+
+  <div id="login"><input type="submit" style="float:right" value="Login" >
+  </div>
+  </form>
+  </div>
+{% endblock %}
+
+
+
