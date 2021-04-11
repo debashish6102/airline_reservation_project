@@ -16,7 +16,7 @@ class User(db.Model, UserMixin):
     email = db.Column(db.String(20), nullable=False, unique=True)
     adhaar = db.Column(db.Integer, nullable=False, unique=True)
     city_id = db.column(db.Integer, db.ForeignKey('city.id'))
-
+    user_name = db.Column(db.String(30), nullable=False, unique=True)
 
 class City(db.Model):
     id = db.Column(db.Integer, primary_key=True)

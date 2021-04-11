@@ -22,13 +22,28 @@
 </head>
 <body background="">
 	<div class="topnav">
-  <a class="active" href="/">Home</a>
+        {% if user.user_name=="admin" %}
+        <a class="active" href="/">Home</a>
+        <a href="my_trip.html">My Trips</a>
+        <a href="">About Us</a>
+        <a class="active" href="/">ADD_FLIGHTS</a>
+        <a class="active" href="/">ADD_AIRPORTS</a>
+        <a class="active" href="/">ADD_CITIES</a>
+        <h5 class="active" style="float:right">{{ user.user_name }}</h5>
+        <a class="active" style="float:right" href="/logout">logout</a>
 
-  <a href="my_trip.html">My Trips</a>
-
-  <a href="">About Us</a>
+        {% elif user.is_authenticated %}
+        <a class="active" href="/">Home</a>
+        <a href="my_trip.html">My Trips</a>
+        <a href="">About Us</a>
+        <h5 class="active" style="float:right">{{ user.user_name }}</h5>
+        <a class="active" style="float:right" href="/logout">logout</a>
+        {% else %}
+        <a class="active" href="/">Home</a>
+        <a href="">About Us</a>
   <a class="active" style="float:right" href="/login">login</a>
         <a class="active" style="float:right" href="/user_detail">register</a>
+        {% endif %}
 </div>
     {% with messages = get_flashed_messages(with_categories=true) %} {% if
     messages %} {% for category, message in messages %} {% if category ==
