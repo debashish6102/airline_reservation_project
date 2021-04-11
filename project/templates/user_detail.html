@@ -5,7 +5,7 @@
 
 {% block content %}
 <div class=sign_up>
-<form class="user_detail" action="login.html" method="post">
+<form class="user_detail" method="post">
   <h4>Enter the following details:</h4>
   <div class="name">
   <label for="fname">First name:<br></label>
@@ -38,12 +38,12 @@
 
   <div class=name>
   <label for="email">Email:<br></label>
-  <input type="text" id="email" name="email" required><br>
+  <input type="email" id="email" name="email" required><br>
   </div>
 
   <div class=name>
   <label for="adhaar">Adhaar Number:<br></label>
-  <input type="text" id="city" name="city" required><br>
+  <input type="text" id="adhaar" name="adhaar" required><br>
   </div>
  
   <div class=credentials> 
@@ -52,10 +52,13 @@
   </div>
  
   <div class=credentials>
-  <label for="password">Password:<br></label>
-  <input type="text" id="password" name="password" required><br> 
+  <label for="password1">Password:<br></label>
+  <input type="password" id="password1" name="password1" required><br>
   </div>
- 
+  <div class=credentials>
+  <label for="password2">confirm Password:<br></label>
+  <input type="password" id="password2" name="password2" required><br>
+  </div>
   <div id="register">
   <input type="submit" style="float:right" value="Submit" >
   </div>
