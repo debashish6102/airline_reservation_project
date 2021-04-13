@@ -18,6 +18,7 @@ class User(db.Model, UserMixin):
     city_id = db.column(db.Integer, db.ForeignKey('city.id'))
     user_name = db.Column(db.String(30), nullable=False, unique=True)
 
+
 class City(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     city_name = db.Column(db.String(30), nullable=False, unique=True)

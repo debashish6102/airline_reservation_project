@@ -12,4 +12,6 @@ def home_page():
 def user_detail_page():
     return render_template("user_detail.html", user=current_user)
 
-
+@views.route('/flight_detail')
+def flight_detail_page():
+    return render_template("flight_detail.html", user=current_user)

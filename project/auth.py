@@ -90,7 +90,6 @@ def user_detail_page():
                     password1, method='sha256'), city_id=0, user_name=user_name)
             db.session.add(new_user)
             db.session.commit()
-            #login_user(user, remember=True)
             flash('Account created!', category='success')
             return redirect(url_for('views.home_page'))
     return render_template("user_detail.html", user=current_user)

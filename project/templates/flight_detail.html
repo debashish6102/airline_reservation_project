@@ -1,20 +1,45 @@
-<!DOCTYPE html>
-<html>
-<head lang="en">
-    <meta charset="UTF-8">
-    <title></title>
-</head>
-<body>
+{% extends 'base.html' %}
+{% block title %}
+    Home Page
+{% endblock %}
+
+
+{% block content %}
   <h4>Select Flight:</h4>
-	<div><head>
-    <link rel="stylesheet" type="text/css" href="style.css">
-</head></div>
-	<form action="passenger_detail.html" method="post">
-  <input type="radio" name="flights" value="flight1" required>Flight1<br>
-  <input type="radio" name="flights" value="flight2">Flight2<br>
-  <input type="radio" name="flights" value="flight2">Flight3
-  <div id="search"><input type="submit" style="float:right" value="Search" >
-     </div>
-</form>
-</body>
-</html>
+	<form  method="post">
+    <table class=.table-responsive>
+  <tr>
+    <th>S.no.</th>
+    <th>Flights</th>
+    </tr>
+    <tr>
+      <td></td>
+    <td>
+    <div class="flights" >
+  <button name="flights" type="submit">
+    <br>
+    Flight Number:<input>
+    <br>
+    <div class="flight_detail">
+    Source:<input>
+    <br>
+  </div>
+  <div class="flight_detail">
+    Destination:<input>
+    <br>
+    </div>
+    <div class="flight_details">
+    Departure Time:<input>
+    <br>
+  </div>
+  <div class="flight_details">
+    Arrival Time:<input>
+    <br>
+    </div>
+    <br>
+    Price:<input>
+  </button>
+  </div>
+  </td>
+ </form>
+{% endblock %}
