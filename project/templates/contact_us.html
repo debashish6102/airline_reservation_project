@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <div id="carouselExampleCaptions" class="carousel slide carousel-fade" data-bs-ride="carousel">
+        <div class="carousel-indicators">
+            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active"
+                aria-current="true" aria-label="Slide 1"></button>
+        </div>
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="https://www.4shared.com/img/LAjW21C0iq/s25/178e89b09d0/contactus" class="d-block w-100" alt="...">
+                
+                <div class="carousel-caption d-none d-md-block">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="contact-container">
+            <h2 class="contact-heading">Contact Us</h2>
+            <div class="contact-material">
+                <p class="fa fa-envelope"><div class="email-label"> Mail Us: <a href="mailto: airwhoosh.contact@gmail.com">airwhoosh.contact@gmail.com</a></p></div>
+                <p class="fa fa-phone"><div class="email-label"> Call Us: <a href="tel:+91 4445556660">+91 4445556660</a></p></div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,58 +1,83 @@
-<!DOCTYPE html>
-<html>
-<head lang="en">
-    <meta charset="UTF-8">
-    <title></title>
-</head>
-<body>
-  <label for="seat">No. of seats:</label><br>
-  <input type="number" id="seat" name="seats" min="1" required><br>
-  <button type="button">Done</button>
-</body>
-<body>
+{% extends 'base.html' %}
 
-  <h4>Enter the details of all the passengers:</h4>
-	<div><head>
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
-</head></div>
-	<form action="payment.html" method="post">
-  
-<table class=passenger_table>
-  <tr>
-    <th>S.no.</th>
-    <th>Name</th>
-    <th>Age</th>
-    <th>Gender</th>
-  </tr>
-  <tr>
-    <td></td>
-    <td>
-      <label for="name"></label>
-  <input type="text" id="name" name="name" required><br>
-    </td>
-    <td>
-      <label for="age"></label>
-  <input type="text" id="age" name="age" required><br>
-    </td>
-    <td>
-      <div id="gender">    
-    <input list="sex" name="passenger_sex" required>
-    <datalist id="sex">
-        <option value="Male"></option>
-        <option value="Female"></option>
-        <option value="Others"></option>
-    </datalist>
+{% block content %}
+
+   <br>
+   <br>
+    <h2 class="flight-heading">Enter Passenger Details:</h2>
+    <div class="container">
+    <form>
+        <br>
+        <div class="row">
+          <div class="col">
+            <div class="input-group mb-3">
+              <span class="input-group-text" id="basic-addon1">Name</span>
+              <input type="text" class="form-control" aria-label="Username"
+                aria-describedby="basic-addon1" required>
+            </div>
+          </div>
+          <div class="col">
+            <div class="input-group mb-3">
+              <span class="input-group-text" id="basic-addon1">Age</span>
+              <input type="number" class="form-control" aria-label="Username"
+                aria-describedby="basic-addon1" required>
+            </div>
+          </div>
+    
+          <div class="col">
+            <div class="input-group mb-3">
+              <span class="input-group-text" id="basic-addon1">Gender</span>
+              <input list="sex" class="form-control" aria-describedby="basic-addon1" required>
+              <datalist id="sex">
+                <option value="Male"></option>
+                <option value="Female"></option>
+                <option value="Others"></option>
+              </datalist>
+            </div>
+          </div>
+        </div>
+        <br>
+        <button type="submit" class="btn btn-grad">Save</button>
+      </form>
     </div>
-    <br>    
-    </td>
-  </tr>
-</table>
-<div id="submit"><input type="submit" style="float:right" value="Submit" >
-  </div>
 
-</form>
-<script src="script.js">
-</script>
+        <h1 class="passenger-heading">Passenger Details:</h1>
+        <div class="container">
+            <div class="table-responsive">
+                <table class="table table-bordered display-1">
+                    <thead class="hi">
+                        <tr>
+                            <th class="col-xs-2">S.No.</th>
+                            <th class="col-xs-2">Name</th>
+                            <th class="col-xs-2">Age</th>
+                            <th class="col-xs-2">Gender</th>
+                          </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="col-xs-2"></td>
+                            <td class="col-xs-2"></td>
+                            <td class="col-xs-8"></td>
+                            <td class="col-xs-2"></td>
+                          </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
 
-</body>
-</html>
+        <div class="container">
+            <a style="text-decoration: none;" href="payment.html"><button class="btn btn-grad mt-2">Submit</button></a>
+        </div>
+
+        <!-- Optional JavaScript; choose one of the two! -->
+        <!-- Option 1: Bootstrap Bundle with Popper -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf"
+            crossorigin="anonymous"></script>
+
+        <!-- Option 2: Separate Popper and Bootstrap JS -->
+        <!--
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js" integrity="sha384-SR1sx49pcuLnqZUnnPwx6FCym0wLsk5JZuNx2bPPENzswTNFaQU1RDvt3wT4gWFG" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.min.js" integrity="sha384-j0CNLUeiqtyaRmlzUHCPZ+Gy5fQu0dQ6eZ/xAww941Ai1SxSY+0EQqNXNE6DZiVc" crossorigin="anonymous"></script>
+    -->
+{% endblock %}
