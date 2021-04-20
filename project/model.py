@@ -32,11 +32,7 @@ class Flight(db.Model):
     price = db.Column(db.Integer, nullable=False)
 
 
-
-
 class Airport(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     airport_name = db.Column(db.String(50), unique=True, nullable=False)
     city_name = db.Column(db.String(30), nullable=False, unique=True)
-    state = db.Column(db.String(10), nullable=False)
-    country = db.Column(db.String(10), nullable=False)

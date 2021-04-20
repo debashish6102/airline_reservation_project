@@ -47,9 +47,9 @@
         <form id="form-1" method="post">
             <div class="row">
                 <div class="col">
-                    <label for="origin">Select Origin:<br>
-                        <input list="airports" name="airport_from" required><br>
-                        <datalist id="airport">
+                    <label for="airport_from">Select Origin:<br>
+                        <input list="airport_from" name="airport_from" required><br>
+                        <datalist id="airport_from">
                             <option value="Chennai"></option>
                             <option value="Delhi"></option>
                             <option value="Kolkata"></option>
@@ -64,9 +64,9 @@
                     </label>
                 </div>
                 <div class="col">
-                    <label for="destination">Select Destination:<br>
-                        <input list="airports" name="airport_to" required><br>
-                        <datalist id="airports">
+                    <label for="airport_to">Select Destination:<br>
+                        <input list="airport_to" name="airport_to" required><br>
+                        <datalist id="airport_to">
                             <option value="Chennai"></option>
                             <option value="Delhi"></option>
                             <option value="Kolkata"></option>
@@ -89,7 +89,7 @@
                 </div>
                 <div class="col">
                     <label for="date"> Travel Date:<br>
-                        <input id="date1" type="date" name="date" required>
+                        <input id="date" type="date" name="date" required>
                     </label>
                 </div>
             </div>

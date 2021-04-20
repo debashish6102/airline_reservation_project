@@ -14,7 +14,7 @@ def home_page():
         airport_to = request.form.get('airport_to')
         seats = request.form.get('seats')
         date = request.form.get('date')
-        flight = Flight.query.filter_by(city_source=airport_from, city_destination=airport_to).all()
+        flight = Flight.query.filter(city_source == airport_from, db.flight.city_destination == airport_to).all()
         return render_template("flight_detail.html", flight=flight, user=current_user)
     return render_template("index.html", user=current_user)
 
@@ -70,10 +70,24 @@ def about_us_page():
 def flight_detail_page():
     return render_template('flight_detail.html', user=current_user)
 
+
 @views.route('/my_trips')
 def my_trips_page():
-    return render_template('mytrip.html',user=current_user)
+    return render_template('mytrip.html', user=current_user)
 
-@views.route('/add_airports')
+
+@views.route('/add_airports', methods=['GET', 'POST'])
 def add_airports_page():
+    if request.method == "POST":
+        port_name = request.form.get('port_name')
+        city_name = request.form.get('city_name')
+        airport = Airport.query.filter_by(airport_name=port_name).first()
+        if airport:
+            flash('error This name is already present', category='error')
+        else:
+            new_airport = Airport(city_name=city_name, airport_name=port_name)
+            db.session.add(new_airport)
+            db.session.commit()
+            flash('airport added!', category='success')
+            return redirect(url_for('views.add_airports_page'))
     return render_template('admin_airport.html', user=current_user)
