@@ -28,7 +28,7 @@ def passenger_detail_page(flight_no):
         passenger_name = request.form.get('passenger_name')
         passenger_age = request.form.get('passenger_age')
         passenger_sex = request.form.get('passenger_sex')
-        passenger = Passenger.query.filter_by(name=passenger_name).first()
+        passenger = Passenger.query.filter_by(name=passenger_name, user_id=current_user.id).first()
         if passenger:
             flash('this passenger is already in your record', category='error')
             passenger = Passenger.query.filter_by(user_id=current_user.id).all()
@@ -126,4 +126,3 @@ def delete(id):
     db.session.delete(del_trip)
     db.session.commit()
     return redirect(url_for('views.my_trips_page'))
-
