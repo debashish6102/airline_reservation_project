@@ -21,7 +21,7 @@
     <div class="container text-center ">
         <div class="table-responsive">
             {% for i in flight %}
-            <button class="flight_button btn btn-outline-light zoom">
+            <button onclick="location.href = '/passenger_detail/{{ i.flight_no }}';" class="flight_button btn btn-outline-light zoom">
                 <table class="table table-fixed">
                     <thead class="hi">
                         <tr>

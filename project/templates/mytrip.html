@@ -46,39 +46,20 @@
                     </tr>
                 </thead>
                 <tbody>
+                {% for i in flights %}{% for j in booking %}
                     <tr>
-                        <td class="col-xs-2">1</td>
-                        <td class="col-xs-8">A</td>
-                        <td class="col-xs-2">B</td>
-                        <td class="col-xs-2">C</td>
+                        <td class="col-xs-2">{{ j.id }}</td>
+                        <td class="col-xs-8">{{ i.flight_no }}</td>
+                        <td class="col-xs-2">{{ i.city_source }}</td>
+                        <td class="col-xs-2">{{ i.city_destination }}</td>
                         <td class="col-xs-8">D</td>
-                        <td class="col-xs-2">E</td>
-                        <td class="col-xs-2">F</td>
+                        <td class="col-xs-2">{{ i.time_dept }}</td>
+                        <td class="col-xs-2">{{ i.time_arrival }}</td>
                         <td class="col-xs-8">G</td>
                         <td class="col-xs-2">H</td>
+                        <td class="col-xs-2"> <a href="/delete/{{ j.id }}" class="btn btn-outline-danger btn-sm">cancel</a></td>
                     </tr>
-                    <tr>
-                        <td class="col-xs-2"></td>
-                        <td class="col-xs-8"></td>
-                        <td class="col-xs-2"></td>
-                        <td class="col-xs-2"></td>
-                        <td class="col-xs-8"></td>
-                        <td class="col-xs-2"></td>
-                        <td class="col-xs-2"></td>
-                        <td class="col-xs-8"></td>
-                        <td class="col-xs-2"></td>
-                    </tr>
-                    <tr>
-                        <td class="col-xs-2"></td>
-                        <td class="col-xs-8"></td>
-                        <td class="col-xs-2"></td>
-                        <td class="col-xs-2"></td>
-                        <td class="col-xs-8"></td>
-                        <td class="col-xs-2"></td>
-                        <td class="col-xs-2"></td>
-                        <td class="col-xs-8"></td>
-                        <td class="col-xs-2"></td>
-                    </tr>
+                    {% endfor %}{% endfor %}
 
                 </tbody>
             </table>

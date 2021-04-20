@@ -6,28 +6,28 @@
    <br>
     <h2 class="flight-heading">Enter Passenger Details:</h2>
     <div class="container">
-    <form>
+    <form method="post">
         <br>
         <div class="row">
           <div class="col">
             <div class="input-group mb-3">
               <span class="input-group-text" id="basic-addon1">Name</span>
-              <input type="text" class="form-control" aria-label="Username"
+              <input type="text" class="form-control" id="passenger_name" name="passenger_name" aria-label="Username"
                 aria-describedby="basic-addon1" required>
             </div>
           </div>
           <div class="col">
             <div class="input-group mb-3">
               <span class="input-group-text" id="basic-addon1">Age</span>
-              <input type="number" class="form-control" aria-label="Username"
+              <input type="number" class="form-control" id="passenger_age" name="passenger_age" aria-label="Username"
                 aria-describedby="basic-addon1" required>
             </div>
           </div>
-    
+
           <div class="col">
             <div class="input-group mb-3">
               <span class="input-group-text" id="basic-addon1">Gender</span>
-              <input list="sex" class="form-control" aria-describedby="basic-addon1" required>
+              <input list="sex" class="form-control" id="passenger_sex" name="passenger_sex" aria-describedby="basic-addon1" required>
               <datalist id="sex">
                 <option value="Male"></option>
                 <option value="Female"></option>
@@ -54,19 +54,22 @@
                           </tr>
                     </thead>
                     <tbody>
+                    {% for i in passenger %}
                         <tr>
-                            <td class="col-xs-2"></td>
-                            <td class="col-xs-2"></td>
-                            <td class="col-xs-8"></td>
-                            <td class="col-xs-2"></td>
+                            <td class="col-xs-2">{{ i.id }}</td>
+                            <td class="col-xs-2">{{ i.name }}</td>
+                            <td class="col-xs-8">{{ i.age }}</td>
+                            <td class="col-xs-2">{{ i.gender }}</td>
+                            <td class="col-xs-2"><a href="/delete_passenger/{{ i.id }}" class="btn btn-outline-danger btn-sm">cancel</a></td>
                           </tr>
+                    {% endfor %}
                     </tbody>
                 </table>
             </div>
         </div>
 
         <div class="container">
-            <a style="text-decoration: none;" href="payment.html"><button class="btn btn-grad mt-2">Submit</button></a>
+            <a style="text-decoration: none;" href="/payment"><button onclick="location.href = '/payment';" class="btn btn-grad mt-2">Submit</button></a>
         </div>
 
         <!-- Optional JavaScript; choose one of the two! -->

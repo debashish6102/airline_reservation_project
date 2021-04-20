@@ -1,7 +1,7 @@
 from flask import Blueprint, render_template, redirect, url_for, request, flash
 from flask_login import login_required, current_user
 from . import db
-from .model import Flight, Airport
+from .model import Flight, Airport, Passenger, Booking_details
 
 views = Blueprint('views', __name__)
 
@@ -14,13 +14,33 @@ def home_page():
         airport_to = request.form.get('airport_to')
         seats = request.form.get('seats')
         date = request.form.get('date')
-        flight = Flight.query.filter(city_source == airport_from, db.flight.city_destination == airport_to).all()
+        flight = Flight.query.filter_by(city_source=airport_from, city_destination=airport_to).all()
         return render_template("flight_detail.html", flight=flight, user=current_user)
     return render_template("index.html", user=current_user)
 
 
-@views.route('/passenger_detail')
-def passenger_detail_page():
+@views.route('/passenger_detail/<int:flight_no>', methods=['GET', 'POST'])
+def passenger_detail_page(flight_no):
+    new_booking = Booking_details(flight_no=flight_no, user_id=current_user.id)
+    db.session.add(new_booking)
+    db.session.commit()
+    if request.method == "POST":
+        passenger_name = request.form.get('passenger_name')
+        passenger_age = request.form.get('passenger_age')
+        passenger_sex = request.form.get('passenger_sex')
+        passenger = Passenger.query.filter_by(name=passenger_name).first()
+        if passenger:
+            flash('this passenger is already in your record', category='error')
+            passenger = Passenger.query.filter_by(user_id=current_user.id).all()
+            return render_template("passenger_detail.html", user=current_user, passenger=passenger)
+        else:
+            new_passenger = Passenger(name=passenger_name, age=passenger_age, gender=passenger_sex,
+                                      user_id=current_user.id)
+            db.session.add(new_passenger)
+            db.session.commit()
+            passenger = Passenger.query.filter_by(user_id=current_user.id).all()
+            flash('passenger added', category='success')
+            return render_template("passenger_detail.html", user=current_user, passenger=passenger)
     return render_template("passenger_detail.html", user=current_user)
 
 
@@ -71,9 +91,11 @@ def flight_detail_page():
     return render_template('flight_detail.html', user=current_user)
 
 
-@views.route('/my_trips')
+@views.route('/my_trips', methods=['GET', 'POST'])
 def my_trips_page():
-    return render_template('mytrip.html', user=current_user)
+    booking = Booking_details.query.filter_by(user_id=current_user.id).all()
+    flights = Flight.query.filter_by(flight_no=Booking_details.flight_no)
+    return render_template('mytrip.html', user=current_user, booking=booking, flights=flights)
 
 
 @views.route('/add_airports', methods=['GET', 'POST'])
@@ -91,3 +113,17 @@ def add_airports_page():
             flash('airport added!', category='success')
             return redirect(url_for('views.add_airports_page'))
     return render_template('admin_airport.html', user=current_user)
+
+
+@views.route('/payment', methods=['GET', 'POST'])
+def payment_page():
+    return render_template('payment.html', user=current_user)
+
+
+@views.route('/delete/<int:id>')
+def delete(id):
+    del_trip = Booking_details.query.get_or_404(id)
+    db.session.delete(del_trip)
+    db.session.commit()
+    return redirect(url_for('views.my_trips_page'))
+

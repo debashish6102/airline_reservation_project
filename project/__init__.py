@@ -19,7 +19,7 @@ def create_app():
     app.register_blueprint(views, url_prefix='/')
     app.register_blueprint(auth, url_prefix='/')
 
-    from .model import User, Airport, Flight
+    from .model import User, Airport, Flight,Passenger, Booking_details
 
     create_database(app)
     login_manager = LoginManager()

@@ -19,6 +19,8 @@ class User(db.Model, UserMixin):
     lname = db.Column(db.String(20), nullable=False)
     password_hash = db.Column(db.String(16), nullable=False)
     email = db.Column(db.String(20), nullable=False, unique=True)
+    passenger = db.relationship('Passenger')
+    booking_details = db.relationship('Booking_details')
 
 
 class Flight(db.Model):
@@ -36,3 +38,17 @@ class Airport(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     airport_name = db.Column(db.String(50), unique=True, nullable=False)
     city_name = db.Column(db.String(30), nullable=False, unique=True)
+
+
+class Passenger(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(20), nullable=False)
+    age = db.Column(db.Integer, nullable=False)
+    gender = db.Column(db.String(10), nullable=False)
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
+
+
+class Booking_details(db.Model):
+    id = id = db.Column(db.Integer, primary_key=True)
+    flight_no = db.Column(db.Integer, nullable=False)
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
