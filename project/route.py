@@ -150,12 +150,6 @@ def add_airports_page():
 
 @views.route('/payment', methods=['GET', 'POST'])
 def payment_page():
-    seat = db.session.query(func.count(Passenger.id)). \
-        filter(Passenger.user_id == current_user.id)
-    db.session.query(Booking_details). \
-        filter(Booking_details.user_id == current_user.id). \
-        update({Booking_details.seats: Booking_details.seats + seat})
-    db.commit()
     return render_template('payment.html', user=current_user)
 
 
