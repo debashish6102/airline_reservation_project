@@ -43,6 +43,7 @@
                         <th class="col-xs-2">Arrival</th>
                         <th class="col-xs-2">Seats Booked</th>
                         <th class="col-xs-2">Total Price</th>
+                        <th class="col-xs-2">Remove Detail</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -57,7 +58,7 @@
                         <td class="col-xs-2">{{ i.time_arrival }}</td>
                         <td class="col-xs-8">G</td>
                         <td class="col-xs-2">H</td>
-                        <td class="col-xs-2"> <a href="/delete/{{ j.id }}" class="btn btn-outline-danger btn-sm">cancel</a></td>
+                        <td class="col-xs-2"><a href="/delete/{{ j.id }}" class="btn btn-outline-danger btn-sm">Cancel</a></td>
                     </tr>
                     {% endfor %}{% endfor %}
 
