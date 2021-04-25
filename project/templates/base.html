@@ -45,7 +45,7 @@
                 aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            {% if user.fname=="admin" %}
+            {% if user.fname=="Admin" %}
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
 
@@ -72,8 +72,8 @@
                     </li>
 
                 </ul>
-                <h5 class="active" style="float:right">{{ user.fname }}</h5>
-                <a class="active" style="float:right" href="/logout">logout</a>
+                <h4 class="username">{{ user.fname }}</h4>
+                <a type="button" class="active btn btn-outline-primary mr-2" style="float:right" href="/logout">Logout</a>
             </div>
             {% elif user.is_authenticated %}
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
