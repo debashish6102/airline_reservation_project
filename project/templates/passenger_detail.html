@@ -37,7 +37,7 @@
           </div>
         </div>
         <br>
-        <button type="submit" class="btn btn-grad">Save</button>
+        <a style="text-decoration: none;" href="{{ url_for('views.passenger_detail_page2') }}"><button type="submit" class="btn btn-grad">Save</button></a>
       </form>
     </div>
 
@@ -47,7 +47,6 @@
                 <table class="table table-bordered display-1">
                     <thead class="hi">
                         <tr>
-                            <th class="col-xs-2">S.No.</th>
                             <th class="col-xs-2">Name</th>
                             <th class="col-xs-2">Age</th>
                             <th class="col-xs-2">Gender</th>
@@ -56,7 +55,6 @@
                     <tbody>
                     {% for i in passenger %}
                         <tr>
-                            <td class="col-xs-2">{{ i.id }}</td>
                             <td class="col-xs-2">{{ i.name }}</td>
                             <td class="col-xs-8">{{ i.age }}</td>
                             <td class="col-xs-2">{{ i.gender }}</td>
@@ -69,7 +67,7 @@
         </div>
 
         <div class="container">
-            <a style="text-decoration: none;" href="/payment"><button onclick="location.href = '/payment';" class="btn btn-grad mt-2">Submit</button></a>
+            <a style="text-decoration: none;" href="/payment"><button class="btn btn-grad mt-2">Submit</button></a>
         </div>
 
         <!-- Optional JavaScript; choose one of the two! -->
