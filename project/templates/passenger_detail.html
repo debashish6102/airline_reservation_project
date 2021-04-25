@@ -51,6 +51,7 @@
                             <th class="col-xs-2">Name</th>
                             <th class="col-xs-2">Age</th>
                             <th class="col-xs-2">Gender</th>
+                            <th class="col-xs-2">Remove Passenger<th>
                           </tr>
                     </thead>
                     <tbody>
@@ -60,7 +61,7 @@
                             <td class="col-xs-2">{{ i.name }}</td>
                             <td class="col-xs-8">{{ i.age }}</td>
                             <td class="col-xs-2">{{ i.gender }}</td>
-                            <td class="col-xs-2"><a href="/delete_passenger/{{ i.id }}" class="btn btn-outline-danger btn-sm">cancel</a></td>
+                            <td class="col-xs-2"><a href="/delete_passenger/{{ i.id }}" class="btn btn-outline-danger btn-sm">Delete</a></td>
                           </tr>
                     {% endfor %}
                     </tbody>
