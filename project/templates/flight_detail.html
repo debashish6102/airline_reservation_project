@@ -37,8 +37,8 @@
                         <td class="col-xs-2">{{ i.flight_no }}</td>
                         <td class="col-xs-8">{{ i.city_source }}</td>
                         <td class="col-xs-2">{{ i.city_destination }}</td>
-                        <td class="col-xs-2">{{ i.time_dept }}</td>
-                        <td class="col-xs-8">{{ i.time_arrival }}</td>
+                        <td class="col-xs-2">{{ i.date_dept.strftime("%d/%m/%Y ") }}{{ i.time_dept }}</td>
+                        <td class="col-xs-8">{{ i.date_arrival.strftime("%d/%m/%Y ") }}{{ i.time_arrival }}</td>
                         <td class="col-xs-2">{{ i.price }}</td>
                     </tr>
                 </table>

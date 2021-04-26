@@ -37,7 +37,7 @@
           </div>
         </div>
         <br>
-        <button type="submit" class="btn btn-grad">Save</button>
+        <a style="text-decoration: none;" href="{{ url_for('views.passenger_detail_page2') }}"><button type="submit" class="btn btn-grad">Save</button></a>
       </form>
     </div>
 
@@ -47,7 +47,6 @@
                 <table class="table table-bordered display-1">
                     <thead class="hi">
                         <tr>
-                            <th class="col-xs-2">S.No.</th>
                             <th class="col-xs-2">Name</th>
                             <th class="col-xs-2">Age</th>
                             <th class="col-xs-2">Gender</th>
@@ -57,7 +56,6 @@
                     <tbody>
                     {% for i in passenger %}
                         <tr>
-                            <td class="col-xs-2">{{ i.id }}</td>
                             <td class="col-xs-2">{{ i.name }}</td>
                             <td class="col-xs-8">{{ i.age }}</td>
                             <td class="col-xs-2">{{ i.gender }}</td>
@@ -78,7 +76,7 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="contact-heading modal-title" id="priceModalLabel">Final amount to be paid:</h5>
+        <h4 class="contact-heading modal-title" id="priceModalLabel">Final amount:{{ (booking_details.seats)*flight.price }}</h4>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">

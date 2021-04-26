@@ -34,11 +34,10 @@
             <table class="table table-bordered display-1">
                 <thead class="hi">
                     <tr>
-                        <th class="col-xs-2">S.No.</th>
+                        <th class="col-xs-8">booking date</th>
                         <th class="col-xs-8">Flight Number</th>
                         <th class="col-xs-2">Source</th>
                         <th class="col-xs-2">Destination</th>
-                        <th class="col-xs-8">Airport</th>
                         <th class="col-xs-2">Departure</th>
                         <th class="col-xs-2">Arrival</th>
                         <th class="col-xs-2">Seats Booked</th>
@@ -47,20 +46,19 @@
                     </tr>
                 </thead>
                 <tbody>
-                {% for i in flights %}{% for j in booking %}
+                {% for booking_details,flight in result %}
                     <tr>
-                        <td class="col-xs-2">{{ j.id }}</td>
-                        <td class="col-xs-8">{{ i.flight_no }}</td>
-                        <td class="col-xs-2">{{ i.city_source }}</td>
-                        <td class="col-xs-2">{{ i.city_destination }}</td>
-                        <td class="col-xs-8">D</td>
-                        <td class="col-xs-2">{{ i.time_dept }}</td>
-                        <td class="col-xs-2">{{ i.time_arrival }}</td>
-                        <td class="col-xs-8">G</td>
-                        <td class="col-xs-2">H</td>
-                        <td class="col-xs-2"><a href="/delete/{{ j.id }}" class="btn btn-outline-danger btn-sm">Cancel</a></td>
+                        <td class="col-xs-2">{{ booking_details.date }}</td>
+                        <td class="col-xs-8">{{ flight.flight_no }}</td>
+                        <td class="col-xs-2">{{ flight.city_source }}</td>
+                        <td class="col-xs-2">{{ flight.city_destination }}</td>
+                        <td class="col-xs-2">{{ flight.date_dept.strftime("%d/%m/%Y ") }}{{ flight.time_dept }}</td>
+                        <td class="col-xs-2">{{ flight.date_arrival.strftime("%d/%m/%Y ") }}{{ flight.time_arrival }}</td>
+                        <td class="col-xs-8">{{ booking_details.seats }}</td>
+                        <td class="col-xs-2">{{ (booking_details.seats)*flight.price }}</td>
+                        <td class="col-xs-2"><a href="/delete/{{ booking_details.id }}" class="btn btn-outline-danger btn-sm">Cancel</a></td>
                     </tr>
-                    {% endfor %}{% endfor %}
+                    {% endfor %}
 
                 </tbody>
             </table>
