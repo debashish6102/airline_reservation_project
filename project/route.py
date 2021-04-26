@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, redirect, url_for, request, flash
+from flask import Blueprint, render_template, redirect, url_for, request, flash, session
 from flask_login import login_required, current_user
 from sqlalchemy import Date, cast, DATE, func
 from sqlalchemy.orm import Session
@@ -31,6 +31,8 @@ def home_page():
 def passenger_detail_page(flight_no):
     new_booking = Booking_details(flight_no=flight_no, user_id=current_user.id)
     db.session.add(new_booking)
+    flights = Flight.query.filter_by(flight_no=flight_no).first()
+    flights.booking_id = new_booking.id
     db.session.commit()
     if request.method == "POST":
         passenger_name = request.form.get('passenger_name')
@@ -61,7 +63,7 @@ def passenger_detail_page2():
         passenger_sex = request.form.get('passenger_sex')
         passenger = Passenger.query.filter_by(name=passenger_name, user_id=current_user.id).first()
         if passenger:
-            flash('this passenger is already in your record', category='error')
+            flash('This passenger is already in your record', category='error')
             passenger = Passenger.query.filter_by(user_id=current_user.id).all()
             return render_template("passenger_detail.html", user=current_user, passenger=passenger)
         else:
@@ -70,7 +72,7 @@ def passenger_detail_page2():
             db.session.add(new_passenger)
             db.session.commit()
             passenger = Passenger.query.filter_by(user_id=current_user.id).all()
-            flash('passenger added', category='success')
+            flash('Passenger added', category='success')
             return render_template("passenger_detail.html", user=current_user, passenger=passenger)
     return render_template("passenger_detail.html", user=current_user, passenger=passenger)
 
@@ -150,6 +152,10 @@ def add_airports_page():
 
 @views.route('/payment', methods=['GET', 'POST'])
 def payment_page():
+    x = db.session.query(Passenger).filter_by(user_id=current_user.id).count()
+    booking_details = Booking_details.query.filter_by(id=Flight.booking_id).first()
+    booking_details.seats = x
+    db.session.commit()
     return render_template('payment.html', user=current_user)
 
 

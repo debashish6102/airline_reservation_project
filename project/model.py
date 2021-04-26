@@ -37,6 +37,7 @@ class Flight(db.Model):
     time_duration = db.Column(db.Integer, nullable=False)
     price = db.Column(db.Integer, nullable=False)
     booking_details = db.relationship('Booking_details')
+    booking_id = db.Column(db.Integer)
 
 
 class Airport(db.Model):
