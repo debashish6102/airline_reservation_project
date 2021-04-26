@@ -72,8 +72,11 @@
                     </li>
 
                 </ul>
-                <h4 class="username">{{ user.fname }}</h4>
-                <a type="button" class="active btn btn-outline-primary mr-2" style="float:right" href="/logout">Logout</a>
+                <div class="mx-2">
+                    <button class="btn btn-danger mr-2">{{ user.fname }}</button>
+                    <a type="button" class="active btn btn-outline-primary mr-2" style="float:right" href="/logout">Logout</a>
+                    
+                </div>
             </div>
             {% elif user.is_authenticated %}
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -95,8 +98,12 @@
                     </li>
 
                 </ul>
-                <h4 class="username">{{ user.fname }}</h4>
-                <a type="button" class="active btn btn-outline-primary mr-2" style="float:right" href="/logout">Logout</a>
+                <div class="mx-2">
+                    <button class="btn btn-danger mr-2">{{ user.fname }}</button>
+                    <a type="button" class="active btn btn-outline-primary mr-2" style="float:right" href="/logout">Logout</a>
+                    
+                </div>
+                
             </div>
             {% else %}
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
