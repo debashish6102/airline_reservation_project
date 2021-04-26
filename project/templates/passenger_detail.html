@@ -70,8 +70,26 @@
         </div>
 
         <div class="container">
-            <a style="text-decoration: none;" href="/payment"><button onclick="location.href = '/payment';" class="btn btn-grad mt-2">Submit</button></a>
+            <a style="text-decoration: none;"><button class="btn btn-grad mt-2" data-bs-toggle="modal" data-bs-target="#priceModal">Submit</button></a>
         </div>
+
+
+<div class="modal fade" id="priceModal" tabindex="-1" aria-labelledby="priceModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="contact-heading modal-title" id="priceModalLabel">Final amount to be paid:</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <button onclick="location.href = '/payment';" class="btn btn-secondary" data-bs-dismiss="modal">Continue</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
 
         <!-- Optional JavaScript; choose one of the two! -->
         <!-- Option 1: Bootstrap Bundle with Popper -->
