@@ -48,16 +48,15 @@
                 <tbody>
                 {% for booking_details,flight in result %}
                     <tr>
-                        <td class="col-xs-2">{{ j.id }}</td>
-                        <td class="col-xs-8">{{ i.flight_no }}</td>
-                        <td class="col-xs-2">{{ i.city_source }}</td>
-                        <td class="col-xs-2">{{ i.city_destination }}</td>
-                        <td class="col-xs-8">D</td>
-                        <td class="col-xs-2">{{ i.time_dept }}</td>
-                        <td class="col-xs-2">{{ i.time_arrival }}</td>
-                        <td class="col-xs-8">G</td>
-                        <td class="col-xs-2">H</td>
-                        <td class="col-xs-2"><a href="/delete/{{ j.id }}" class="btn btn-outline-danger btn-sm">Cancel</a></td>
+                        <td class="col-xs-2">{{ booking_details.date }}</td>
+                        <td class="col-xs-8">{{ flight.flight_no }}</td>
+                        <td class="col-xs-2">{{ flight.city_source }}</td>
+                        <td class="col-xs-2">{{ flight.city_destination }}</td>
+                        <td class="col-xs-2">{{ flight.date_dept.strftime("%d/%m/%Y ") }}{{ flight.time_dept }}</td>
+                        <td class="col-xs-2">{{ flight.date_arrival.strftime("%d/%m/%Y ") }}{{ flight.time_arrival }}</td>
+                        <td class="col-xs-8">{{ booking_details.seats }}</td>
+                        <td class="col-xs-2">{{ (booking_details.seats)*flight.price }}</td>
+                        <td class="col-xs-2"><a href="/delete/{{ booking_details.id }}" class="btn btn-outline-danger btn-sm">Cancel</a></td>
                     </tr>
                     {% endfor %}
 
