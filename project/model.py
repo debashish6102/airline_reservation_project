@@ -1,4 +1,6 @@
 import datetime
+
+from sqlalchemy.types import Boolean, Date, DateTime, Float, Integer, Text, Time, Interval
 from project import db
 from flask_login import UserMixin
 from sqlalchemy.sql import func
@@ -9,7 +11,7 @@ class MyDateTime(db.TypeDecorator):
 
     def process_bind_param(self, value, dialect):
         if type(value) is str:
-            return datetime.datetime.strptime(value, '%Y-%m-%dT%H:%M')
+            return datetime.datetime.strptime(value, '%Y-%m-%d')
         return value
 
 
@@ -24,14 +26,18 @@ class User(db.Model, UserMixin):
 
 
 class Flight(db.Model):
-    flight_no = db.Column(db.Integer, unique=True, nullable=False, primary_key=True)
+    flight_no = db.Column(db.Integer, primary_key=True)
     city_source = db.Column(db.String(10), nullable=False, )
     city_destination = db.Column(db.String(10), nullable=False)
     no_of_seats = db.Column(db.Integer, nullable=False)
-    time_dept = db.Column(MyDateTime, nullable=False, )
-    time_arrival = db.Column(MyDateTime, nullable=False, )
-    time_duration = db.Column(db.Integer, nullable=False, )
+    date_dept = db.Column(MyDateTime, nullable=False)
+    date_arrival = db.Column(MyDateTime, nullable=False)
+    time_dept = db.Column(db.String(16), nullable=False)
+    time_arrival = db.Column(db.String(16), nullable=False)
+    time_duration = db.Column(db.Integer, nullable=False)
     price = db.Column(db.Integer, nullable=False)
+    booking_details = db.relationship('Booking_details')
+    booking_id = db.Column(db.Integer)
 
 
 class Airport(db.Model):
@@ -49,6 +55,8 @@ class Passenger(db.Model):
 
 
 class Booking_details(db.Model):
-    id = id = db.Column(db.Integer, primary_key=True)
-    flight_no = db.Column(db.Integer, nullable=False)
+    id = db.Column(db.Integer, primary_key=True)
+    flight_no = db.Column(db.Integer, db.ForeignKey('flight.flight_no'))
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
+    date = db.Column(db.DateTime(timezone=True), default=func.now())
+    seats = db.Column(db.Integer, default=0)
