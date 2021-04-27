@@ -48,7 +48,7 @@
                 <tbody>
                 {% for booking_details,flight in result %}
                     <tr>
-                        <td class="col-xs-2">{{ booking_details.date }}</td>
+                        <td class="col-xs-2">{{ booking_details.date.strftime("%d/%m/%Y ") }}</td>
                         <td class="col-xs-8">{{ flight.flight_no }}</td>
                         <td class="col-xs-2">{{ flight.city_source }}</td>
                         <td class="col-xs-2">{{ flight.city_destination }}</td>
