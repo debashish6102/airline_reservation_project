@@ -76,6 +76,8 @@ def passenger_detail_page2():
             new_passenger = Passenger(name=passenger_name, age=passenger_age, gender=passenger_sex,
                                       user_id=current_user.id)
             db.session.add(new_passenger)
+            x = db.session.query(Passenger).filter_by(user_id=current_user.id).count()
+            booking_details.seats = x
             db.session.commit()
             passenger = Passenger.query.filter_by(user_id=current_user.id).all()
             flash('Passenger added', category='success')
