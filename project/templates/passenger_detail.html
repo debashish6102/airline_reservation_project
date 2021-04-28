@@ -27,12 +27,12 @@
           <div class="col">
             <div class="input-group mb-3">
               <span class="input-group-text" id="basic-addon1">Gender</span>
-              <input list="sex" class="form-control" id="passenger_sex" name="passenger_sex" aria-describedby="basic-addon1" required>
-              <datalist id="sex">
-                <option value="Male"></option>
-                <option value="Female"></option>
-                <option value="Others"></option>
-              </datalist>
+              <select name="passenger_sex" id="passenger_sex" class="form-select form-control" required> 
+                <option disabled selected value>Select Gender</option>  
+                <option value="1">Male</option>
+                <option value="2">Female</option>
+                <option value="3">Others</option>
+              </select>
             </div>
           </div>
         </div>
