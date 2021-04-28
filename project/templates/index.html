@@ -55,13 +55,13 @@
         </button>
     </div>
 
-    <div class="form1">
+<div class="form1">
         <h1 class="home-heading">Book Your Flight Today</h1>
         <form id="form-1" method="post">
             <div class="row">
                 <div class="col">
-                    <label for="airport_from">Select Origin:<br>
-                        <select name="airport_from" id="airport_from" required><br>
+                    <label for="airport_from">Select Origin:</label><br>
+                        <select name="airport_from" id="airport_from" required>
                             <option disabled selected value>Select Origin</option>
                             <option value="1">Chennai</option>
                             <option value="2">Delhi</option>
@@ -69,11 +69,10 @@
                             <option value="4">Sikkim</option>
                             <option value="5">Ahemadabad</option>
                         </select>
-                    </label>
                 </div>
                 <div class="col">
-                    <label for="airport_to">Select Destination:<br>
-                        <select name="airport_to" id="airport_to" required><br>
+                    <label for="airport_to">Select Destination:</label><br>
+                        <select name="airport_to" id="airport_to" required>
                             <option disabled selected value>Select Destination</option>
                             <option value="1">Chennai</option>
                             <option value="2">Delhi</option>
@@ -81,8 +80,8 @@
                             <option value="4">Sikkim</option>
                             <option value="5">Ahemadabad</option>
                         </select>
-                    </label>
                 </div>
+            </div>
             <br>
             <div class="row">
                 <div class="col">
@@ -90,7 +89,7 @@
                     <input type="number" id="seats" name="seats" min="1" required><br>
                 </div>
                 <div class="col">
-                    <label for="date">Travel Date:<br>
+                    <label for="date"> Travel Date:<br>
                         <input id="date" type="date" name="date" required>
                     </label>
                 </div>
