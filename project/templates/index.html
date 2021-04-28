@@ -1,6 +1,19 @@
 {% extends 'base.html' %}
+{% block stl %}
+<style>
+    select {
+        width: 180px;
+        height: 30px;
+    }
 
+    input {
+        width: 180px;
+        height: 30px;
+    }
+</style>
+    {% endblock %}
 {% block content %}
+
     <div id="carouselExampleCaptions" class="carousel slide carousel-fade" data-bs-ride="carousel">
         <div class="carousel-indicators">
             <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active"
@@ -48,29 +61,28 @@
             <div class="row">
                 <div class="col">
                     <label for="airport_from">Select Origin:<br>
-                        <input list="airport_from" name="airport_from" required><br>
-                        <datalist id="airport_from">
-                            <option value="Chennai"></option>
-                            <option value="Delhi"></option>
-                            <option value="Chandigarh"></option>
-                            <option value="Sikkim"></option>
-                            <option value="Ahemadabad"></option>
-                        </datalist>
+                        <select name="airport_from" id="airport_from" required><br>
+                            <option disabled selected value>Select Origin</option>
+                            <option value="1">Chennai</option>
+                            <option value="2">Delhi</option>
+                            <option value="3">Chandigarh</option>
+                            <option value="4">Sikkim</option>
+                            <option value="5">Ahemadabad</option>
+                        </select>
                     </label>
                 </div>
                 <div class="col">
                     <label for="airport_to">Select Destination:<br>
-                        <input list="airport_to" name="airport_to" required><br>
-                        <datalist id="airport_to">
-                            <option value="Chennai"></option>
-                            <option value="Delhi"></option>
-                            <option value="Chandigarh"></option>
-                            <option value="Sikkim"></option>
-                            <option value="Ahemadabad"></option>
-                        </datalist>
+                        <select name="airport_to" id="airport_to" required><br>
+                            <option disabled selected value>Select Destination</option>
+                            <option value="1">Chennai</option>
+                            <option value="2">Delhi</option>
+                            <option value="3">Chandigarh</option>
+                            <option value="4">Sikkim</option>
+                            <option value="5">Ahemadabad</option>
+                        </select>
                     </label>
                 </div>
-            </div>
             <br>
             <div class="row">
                 <div class="col">
