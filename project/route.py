@@ -57,6 +57,11 @@ def passenger_detail_page(flight_no):
 @views.route('/passenger_detail', methods=['GET', 'POST'])
 def passenger_detail_page2():
     passenger = Passenger.query.filter_by(user_id=current_user.id).all()
+    booking_details = Booking_details.query.filter_by(id=Flight.booking_id).first()
+    flight = Flight.query.filter_by(booking_id=Booking_details.id).first()
+    x = db.session.query(Passenger).filter_by(user_id=current_user.id).count()
+    booking_details.seats = x
+    db.session.commit()
     if request.method == "POST":
         passenger_name = request.form.get('passenger_name')
         passenger_age = request.form.get('passenger_age')
@@ -65,16 +70,21 @@ def passenger_detail_page2():
         if passenger:
             flash('This passenger is already in your record', category='error')
             passenger = Passenger.query.filter_by(user_id=current_user.id).all()
-            return render_template("passenger_detail.html", user=current_user, passenger=passenger)
+            return render_template("passenger_detail.html", user=current_user, passenger=passenger,
+                                   booking_details=booking_details, flight=flight)
         else:
             new_passenger = Passenger(name=passenger_name, age=passenger_age, gender=passenger_sex,
                                       user_id=current_user.id)
             db.session.add(new_passenger)
+            x = db.session.query(Passenger).filter_by(user_id=current_user.id).count()
+            booking_details.seats = x
             db.session.commit()
             passenger = Passenger.query.filter_by(user_id=current_user.id).all()
             flash('Passenger added', category='success')
-            return render_template("passenger_detail.html", user=current_user, passenger=passenger)
-    return render_template("passenger_detail.html", user=current_user, passenger=passenger)
+            return render_template("passenger_detail.html", user=current_user, passenger=passenger,
+                                   booking_details=booking_details, flight=flight)
+    return render_template("passenger_detail.html", user=current_user, passenger=passenger,
+                           booking_details=booking_details, flight=flight)
 
 
 @views.route('/add_flights', methods=['GET', 'POST'])
@@ -152,10 +162,6 @@ def add_airports_page():
 
 @views.route('/payment', methods=['GET', 'POST'])
 def payment_page():
-    x = db.session.query(Passenger).filter_by(user_id=current_user.id).count()
-    booking_details = Booking_details.query.filter_by(id=Flight.booking_id).first()
-    booking_details.seats = x
-    db.session.commit()
     return render_template('payment.html', user=current_user)
 
 

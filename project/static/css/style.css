@@ -2,6 +2,11 @@
     margin-right: 20px;
   }
 
+.marlef{
+  margin-left: 327.5590551181px;
+  margin-right: 327.5590551181px;
+}
+
 .form1 {
   width: 500px;
   margin-top: 55px;
@@ -10,16 +15,6 @@
   text-align: center;
   font-family: 'Open Sans', sans-serif;
   font-weight: 600;
-}
-
-.username{
-  color: white;
-  font-family: 'Open Sans', sans-serif;
-  font-weight: 400;
-  margin-top: auto;
-  margin-right: auto;
-  margin-left: auto;
-  margin-right: auto;
 }
 
 .navbar-brand{
